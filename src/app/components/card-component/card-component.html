@@ -1,0 +1,43 @@
+<div class="container" [formGroup]="boardForm">
+  <div class="card-container" formArrayName="values">
+    @for (col of columns(); track $index; let i = $index) {
+      <div class="column">
+        <div class="column-header">
+          <h3>Column{{ i + 1 }}</h3>
+          <p class="secondary">{{col.length}}</p>
+        </div>
+
+        <!-- Items -->
+        @for (item of col; track item.id) {
+          <div class="item" [style.backgroundColor]="colorFor(item.value)">
+            @if (!item.editing) {
+              <span>{{ item.value }}</span>
+              <div class="actions">
+                <button (click)="editItem(item, true)">✏️</button>
+                <button (click)="deleteItem(i, item.id)">🗑️</button>
+              </div>
+            } @else {
+              <input type="text" #editInput [value]="item.value" />
+              <button (click)="saveItem(item, +editInput.value)">💾</button>
+            }
+          </div>
+        } @empty {
+          <p class="empty">Aucun élément</p>
+        }
+
+        <!-- To add a new item -->
+        <div class="add-form">
+          @if (!showInput()[i]) {
+            <button class="add-item secondary" type="button" (click)="toggleInput(i)">
+              + New
+            </button>
+          } @else {
+            <label for="i"></label>
+            <input type="text" [formControlName]="i" placeholder="Add a number" />
+            <button type="button" (click)="addItem(i)"> Add</button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

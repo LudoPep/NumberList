@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --main-bg-color: rgba(31, 30, 30, 0.778);
+    --card-bg-color: rgba(50, 50, 50, 0.497);
+    --cell-bg-color: rgba(115, 115, 115, 0.381);
+    --card-shadow-color: rgb(202, 202, 202);
+    --main-text-color: rgb(234, 233, 233);
+    --secondary-text-color: rgb(175, 175, 175);
+}
+
+html, body {
+    height: 100%;
+    width: auto;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+
