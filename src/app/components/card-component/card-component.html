@@ -17,7 +17,7 @@
                 <button (click)="deleteItem(i, item.id)">🗑️</button>
               </div>
             } @else {
-              <input type="text" #editInput [value]="item.value" />
+              <input type="text" #editInput [value]="item.value" (keyup.enter)="saveItem(item, +editInput.value)"/>
               <button (click)="saveItem(item, +editInput.value)">💾</button>
             }
           </div>
