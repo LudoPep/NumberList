@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { BoardService } from '../../services/board-service';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { getColor } from '../../utils/helper';
@@ -12,7 +12,8 @@ import { Item } from '../../interfaces/item';
     ReactiveFormsModule
   ],
   templateUrl: './card-component.html',
-  styleUrl: './card-component.scss'
+  styleUrl: './card-component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
 
